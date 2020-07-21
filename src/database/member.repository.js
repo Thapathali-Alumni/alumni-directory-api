@@ -34,4 +34,4 @@ class MemberRepository {
   }
 }
 
-module.exports = ProjectRepository;
+module.exports = MemberRepository;

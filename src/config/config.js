@@ -1,9 +1,9 @@
 const config = {
   development: {
-    DB_FILE: "./resource/db.sqlite3",
+    DB_FILE: "./src/resource/db.sqlite3",
   },
   production: {
-    DB_FILE: "./resource/db.sqlite3",
+    DB_FILE: "./src/resource/db.sqlite3",
   },
 };
 
