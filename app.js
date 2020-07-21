@@ -6,13 +6,15 @@ const debug = require('debug')('alumni-directory-api:server');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const api = require('./src/api');
-
+const routers = require('./src/routes/routes.index')
 
 const startServer = function (port) {
     const app = express();
     app.use(logger('dev'));
     app.use(express.json());
-    app.use(express.urlencoded({extended: false}));
+    app.use(express.urlencoded({
+        extended: false
+    }));
     app.use(cookieParser());
     app.set('port', port);
     const server = http.createServer(app);
@@ -26,12 +28,13 @@ const startServer = function (port) {
 
     server.on('listening', () => {
         const addr = server.address();
-        const bind = typeof addr === 'string'
-            ? 'pipe ' + addr
-            : 'port ' + addr.port;
+        const bind = typeof addr === 'string' ?
+            'pipe ' + addr :
+            'port ' + addr.port;
         debug('Listening on ' + bind);
     });
     app.use('/', api);
+    require('./src/routes/routes.index')(app);
     return app;
 };
 
