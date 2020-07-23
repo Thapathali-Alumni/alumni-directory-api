@@ -13,4 +13,4 @@ cd alumni-directory-api
 npm install
 npm start
 ```
-Currently, only one api endpoint is available at http://localhost:3000/
+Load the api documentation from http://localhost:3000/docs
