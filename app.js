@@ -6,6 +6,8 @@ const debug = require('debug')('alumni-directory-api:server');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const api = require('./src/api');
+const swagger = require('./src/swagger')
+
 const routers = require('./src/routes/routes.index')
 
 const startServer = function (port) {
@@ -34,6 +36,9 @@ const startServer = function (port) {
         debug('Listening on ' + bind);
     });
     app.use('/', api);
+    //Configure and use swagger
+    app.use('/', swagger);
+
     require('./src/routes/routes.index')(app);
     return app;
 };
