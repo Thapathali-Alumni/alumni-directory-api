@@ -1,3 +1,5 @@
+"use strict"
+
 class Account {
     constructor(name, email, role, photoUrl) {
         this.name = name;

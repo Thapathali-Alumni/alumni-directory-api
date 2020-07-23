@@ -2,8 +2,7 @@ const express = require('express');
 const AccountController = require('../controllers/account.controller')
 const unauth = express.Router()
 
-unauth
-    .get('/account/register', AccountController.register)
+unauth.get('/account/register', AccountController.register)
 
 /**
  * @swagger
@@ -34,7 +33,6 @@ unauth
  *              schema:
  *                $ref: '#/components/schemas/Account'
  */
-
-unauth.post('/account/login', AccountController.getAll)
+unauth.post('/account/login', AccountController.login)
 
 module.exports = unauth
