@@ -1,8 +1,19 @@
 const express = require('express');
-const AccountController = require('../controllers/account.controller')
-const unauth = express.Router()
+const AccountController = require('../controllers/account.controller');
+const validator = require('express-validation');
+const Joi = require('joi');
 
-unauth.get('/account/register', AccountController.register)
+const unauth = express.Router();
+const authController = require('../controllers/auth.controller');
+// POST /api/auth/login
+const loginSchema = {
+    body: Joi.object({
+        username: Joi.string().required(),
+        password: Joi.string().required(),
+    })
+};
+
+unauth.get('/account/register', validator.validate(loginSchema), AccountController.register);
 
 /**
  * @swagger
@@ -33,6 +44,6 @@ unauth.get('/account/register', AccountController.register)
  *              schema:
  *                $ref: '#/components/schemas/Account'
  */
-unauth.post('/account/login', AccountController.login)
+unauth.post('/account/login', validator.validate(loginSchema), authController.login)
 
 module.exports = unauth
