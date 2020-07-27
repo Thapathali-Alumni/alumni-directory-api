@@ -6,10 +6,12 @@
     "start": "env NODE_ENV=development nodemon app.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
     "express-validation": "^3.0.5",
     "helmet": "^3.23.3",
     "http-status": "^1.4.2",
@@ -18,11 +20,13 @@
     "lodash": "^4.17.19",
     "morgan": "~1.9.1",
     "sequelize": "^6.3.3",
+    "sequelize-json-schema": "^2.1.1",
     "sqlite3": "^5.0.0",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "yamljs": "^0.3.0"
   }
 }

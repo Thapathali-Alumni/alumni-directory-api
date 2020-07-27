@@ -1,6 +1,7 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const express = require('express');
+const httpStatus = require("http-status");
 const router = express.Router()
 
 // Swagger set up
@@ -25,12 +26,24 @@ const options = {
             url: "http://localhost:3000/api/v1"
         }]
     },
-    apis: ["./src/models/account.js", "./routes/routes.index.js", "./src/routes/routes.unauth.js"]
+
+    apis: ["./src/components.yaml",
+        "./auto-sequelize-models.yaml",
+        // "./src/models/user.model.js",
+        "./routes/routes.index.js",
+        "./src/routes/routes.unauth.js",
+        "./src/routes/user.route.js",
+    ]
 };
 
 
 
 const specs = swaggerJsdoc(options);
+
+router.get("/api-docs.json", (req, res) => {
+    res.send(specs);
+});
+
 router.use("/docs", swaggerUi.serve);
 router.get("/docs", swaggerUi.setup(specs, {
     explorer: true

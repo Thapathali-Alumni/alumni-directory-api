@@ -3,26 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 const config = require('../config/config');
+const sqlite = require('sqlite3');
+const {
+    json
+} = require('sequelize');
 
 const db = {};
 
-// const sqlite = require('sqlite3');
-// const db2 = new sqlite.Database(config.DB_FILE);
-
-// connect to postgres db
-// const sequelize = new Sequelize(
-//     // config.postgres.db,
-//     // config.postgres.user,
-//     // config.postgres.password, {
-//     //     dialect: 'postgres',
-//     //     port: config.postgres.port,
-//     //     host: config.postgres.host,
-//     // },
-//     {
-//         dialect: 'sqlite',
-//         storage: './db.sqlite'
-//     }
-// );
+//Create database if it does not exist
+if (!fs.existsSync(config.DB_FILE)) {
+    new sqlite.Database(config.DB_FILE);
+}
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -51,9 +42,7 @@ fs
 
         // const model = sequelize.import(path.join(modelsDir, file));
         const model = require(path.join(modelsDir, file))
-
         model.init(sequelize, Sequelize)
-
         db[model.name] = model;
     });
 
@@ -66,8 +55,9 @@ Object.keys(db).forEach((modelName) => {
 
 // Synchronizing any model changes with database.
 sequelize.sync().then((err) => {
-    if (err) console.error('An error occured %j', err);
-    else console.info('Database synchronized');
+    if (err) {
+        console.error('Database Sync complete with : %j', err);
+    } else console.info('Database synchronized');
 });
 
 // assign the sequelize variables to the db object and returning the db.

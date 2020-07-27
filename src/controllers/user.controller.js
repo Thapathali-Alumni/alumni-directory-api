@@ -1,8 +1,7 @@
 const httpStatus = require('http-status');
-const db = require('../database/sequelize')
-
+const db = require('../database/sequelize');
+const userService = require('../services/user.service');
 const User = db.User;
-
 
 class UserController {
     /**
@@ -10,7 +9,7 @@ class UserController {
      */
     async load(req, res, next, id) {
         try {
-            const userFoundResponse = await User.findById(id);
+            const userFoundResponse = await db.User.findByPk(id);
             if (!userFoundResponse) {
                 const e = new Error('User does not exist');
                 e.status = httpStatus.NOT_FOUND;
@@ -31,33 +30,25 @@ class UserController {
         return res.json(req.user);
     }
 
-    /**
-     * Create new user
-     * @property {string} req.body.username - The username of user.
-     * @property {string} req.body.mobileNumber - The mobileNumber of user.
-     * @returns {User}
-     */
-    create(req, res, next) {
-        const user = User.build({
-            username: req.body.username,
-        });
 
-        user
-            .save()
-            .then(savedUser => res.json(savedUser))
-            .catch(e => next(e));
+    create(req, res, next) {
+        userService.register(req.body, req.get('origin'))
+            .then(() => res.json({
+                message: 'Registration successful, please check your email for verification instructions'
+            }))
+            .catch(next);
     }
+
 
     /**
      * Update existing user
      * @property {string} req.body.username - The username of user.
-     * @property {string} req.body.mobileNumber - The mobileNumber of user.
      * @returns {User}
      */
     update(req, res, next) {
         const user = req.user;
         user.username = req.body.username;
-        user.mobileNumber = req.body.mobileNumber;
+        user.role = req.body.role;
 
         user
             .save()
