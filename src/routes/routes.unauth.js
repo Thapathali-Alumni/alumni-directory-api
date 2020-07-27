@@ -1,5 +1,4 @@
 const express = require('express');
-const AccountController = require('../controllers/account.controller');
 const validator = require('express-validation');
 const Joi = require('joi');
 
@@ -13,15 +12,14 @@ const loginSchema = {
     })
 };
 
-unauth.get('/account/register', validator.validate(loginSchema), AccountController.register);
 
 /**
  * @swagger
  * path:
- *  /account/login:
+ *  /login:
  *    post:
  *      summary: Authenticates and logs in
- *      tags: [Account]
+ *      tags: [Login]
  *      requestBody:
  *        required: true
  *        content:
@@ -44,6 +42,6 @@ unauth.get('/account/register', validator.validate(loginSchema), AccountControll
  *              schema:
  *                $ref: '#/components/schemas/Account'
  */
-unauth.post('/account/login', validator.validate(loginSchema), authController.login)
+unauth.post('/login', validator.validate(loginSchema), authController.login)
 
 module.exports = unauth

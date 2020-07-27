@@ -1,55 +1,25 @@
+"use strict"
 const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 const config = require('../config/config');
-
-
-// sample user, used for authentication
-const user = {
-    username: 'react',
-    password: 'express',
-};
+const userService = require('../services/user.service');
 
 class AuthController {
-
-    /**
-     * Returns jwt token if valid username and password is provided
-     * @param req
-     * @param reslogin
-     * @param next
-     * @returns {*}
-     */
     async login(req, res, next) {
-        // Ideally you'll fetch this from the db
-        // Idea here was to show how jwt works with simplicity
-        if (req.body.username === user.username && req.body.password === user.password) {
-            const token = jwt.sign({
-                    username: user.username,
-                    expiresIn: 3600,
-                },
-                config.jwtSecret,
-            );
-            return res.json({
-                token,
-                username: user.username,
-            });
-        }
-        const err = new APIError('Authentication error', httpStatus.UNAUTHORIZED, true);
-        return next(err);
-    }
+        const {
+            username,
+            password
+        } = req.body;
+        const ipAddress = req.ip || req.headers['x-real-ip'] || req.connection.remoteAddress;
 
-    /**
-     * This is a protected route. Will return random number only if jwt token is provided in header.
-     * @param req
-     * @param res
-     * @returns {*}
-     */
-    getRandomNumber(req, res) {
-        // req.user is assigned by jwt middleware if valid token is provided
-        return res.json({
-            user: req.user,
-            num: Math.random() * 100,
-        });
+        try {
+            const userInfo = await userService.authenticate(username, password, ipAddress);
+            res.json(userInfo)
+        } catch (exception) {
+            return next(exception);
+        }
+
     }
 }
 

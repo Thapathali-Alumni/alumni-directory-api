@@ -13,23 +13,19 @@ class Member extends Sequelize.Model {
             firstNameNepali: DataTypes.STRING,
             lastNameNepali: DataTypes.STRING,
             dob: DataTypes.DATEONLY,
-            batchId: DataTypes.INTEGER,
-            departmentId: DataTypes.INTEGER,
-            programId: DataTypes.INTEGER,
             startDate: DataTypes.DATEONLY,
             endDate: DataTypes.DATEONLY,
             photoUrl: DataTypes.STRING,
-            description: DataTypes.TEXT
+            description: DataTypes.TEXT,
+            email: DataTypes.STRING
         }, {
             sequelize
         });
     }
 
-    // static associate(models) {
-    //     this.myAssociation = this.belongsTo(models.OtherModel);
-    //     // or
-    //     this.myAssociation = models.MyModel.belongsTo(models.OtherModel);
-    //   }
+    static associate(models) {
+        this.myAssociation = this.belongsTo(models.Batch);
+    }
 }
 
 module.exports = Member
