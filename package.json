@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "db:makemigrations": "./node_modules/sequelize-auto-migrations/bin/makemigration.js",
     "start": "env NODE_ENV=development nodemon app.js"
   },
   "dependencies": {
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
+    "sequelize-auto-migrations": "github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba",
+    "sequelize-cli": "^6.2.0",
     "yamljs": "^0.3.0"
   }
 }

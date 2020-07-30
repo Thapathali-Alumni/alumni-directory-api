@@ -1,5 +1,5 @@
 const jwt = require('express-jwt');
-const secret = require('../config/config').jwtSecret;
+const secret = require('../config').jwtSecret;
 const db = require('../database/sequelize');
 
 module.exports = authorize;

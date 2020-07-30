@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
-const config = require('../config/config');
+const config = require('../config');
 const sqlite = require('sqlite3');
 const {
     json
@@ -10,10 +10,10 @@ const {
 
 const db = {};
 
-//Create database if it does not exist
-if (!fs.existsSync(config.DB_FILE)) {
-    new sqlite.Database(config.DB_FILE);
-}
+// //Create database if it does not exist
+// if (!fs.existsSync(config.DB_FILE)) {
+//     new sqlite.Database(config.DB_FILE);
+// }
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -53,12 +53,12 @@ Object.keys(db).forEach((modelName) => {
     }
 });
 
-// Synchronizing any model changes with database.
-sequelize.sync().then((err) => {
-    if (err) {
-        console.error('Database Sync complete with : %j', err);
-    } else console.info('Database synchronized');
-});
+// // Synchronizing any model changes with database.
+// sequelize.sync().then((err) => {
+//     if (err) {
+//         console.error('Database Sync complete with : %j', err);
+//     } else console.info('Database synchronized');
+// });
 
 // assign the sequelize variables to the db object and returning the db.
 module.exports = _.extend({

@@ -28,7 +28,7 @@ const options = {
     },
 
     apis: ["./src/components.yaml",
-        "./auto-sequelize-models.yaml",
+        "./src/auto-sequelize-models.yaml",
         // "./src/models/user.model.js",
         "./routes/routes.index.js",
         "./src/routes/routes.unauth.js",
