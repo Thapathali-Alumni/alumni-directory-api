@@ -17,7 +17,7 @@ const db = {};
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: config.DB_FILE
+  storage: config.storage
 });
 
 sequelize

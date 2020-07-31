@@ -15,10 +15,7 @@ const db = {};
 //     new sqlite.Database(config.DB_FILE);
 // }
 
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: config.DB_FILE
-});
+const sequelize = new Sequelize(config);
 
 sequelize
     .authenticate()
@@ -53,7 +50,7 @@ Object.keys(db).forEach((modelName) => {
     }
 });
 
-// // Synchronizing any model changes with database.
+// Synchronizing any model changes with database.
 // sequelize.sync().then((err) => {
 //     if (err) {
 //         console.error('Database Sync complete with : %j', err);
