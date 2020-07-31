@@ -3,6 +3,11 @@ const swaggerUi = require("swagger-ui-express");
 const express = require('express');
 const httpStatus = require("http-status");
 const router = express.Router()
+const glob = require('glob');
+const path = require('path');
+
+const routesDir = path.normalize(`${__dirname}/routes`);
+const apiFiles = glob.sync(routesDir + '/*.js');
 
 // Swagger set up
 const options = {
@@ -29,17 +34,13 @@ const options = {
 
     apis: ["./src/components.yaml",
         "./src/auto-sequelize-models.yaml",
-        // "./src/models/user.model.js",
-        "./routes/routes.index.js",
-        "./src/routes/routes.unauth.js",
-        "./src/routes/user.route.js",
+        ...apiFiles
     ]
 };
 
 
 
 const specs = swaggerJsdoc(options);
-
 router.get("/api-docs.json", (req, res) => {
     res.send(specs);
 });

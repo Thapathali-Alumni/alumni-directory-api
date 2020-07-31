@@ -8,7 +8,6 @@ const logger = require('morgan');
 const api = require('./src/api');
 const swagger = require('./src/swagger')
 const APIError = require('./src/helpers/APIError')
-const routers = require('./src/routes/routes.index')
 const helmet = require('helmet');
 const cors = require('cors');
 const expressValidation = require('express-validation')
@@ -45,7 +44,7 @@ const startServer = function (port) {
     app.use('/', api);
     //Configure and use swagger
     app.use('/', swagger);
-    require('./src/routes/routes.index')(app);
+    require('./src/routes')(app);
 
     // if error is not an instanceOf APIError, convert it.
     app.use((err, req, res, next) => {
