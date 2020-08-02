@@ -21,9 +21,16 @@ class User extends Sequelize.Model {
                 type: DataTypes.INTEGER,
             },
             role: DataTypes.STRING,
-            verificationToken: DataTypes.STRING
+            verificationToken: {
+                type: DataTypes.STRING,
+                field: 'verification_token'
+            }
         }, {
-            sequelize
+            sequelize,
+            underscored: true,
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
         });
     }
 

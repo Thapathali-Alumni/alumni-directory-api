@@ -8,18 +8,45 @@ class Member extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement: true
             },
-            firstName: DataTypes.STRING,
-            lastName: DataTypes.STRING,
-            firstNameNepali: DataTypes.STRING,
-            lastNameNepali: DataTypes.STRING,
+            firstName: {
+                type: DataTypes.STRING,
+                field: 'first_name',
+                allowNull: false
+            },
+            lastName: {
+                type: DataTypes.STRING,
+                field: 'last_name',
+                allowNull: false
+            },
+            firstNameNepali: {
+                type: DataTypes.STRING,
+                field: 'first_name_nepali',
+            },
+            lastNameNepali: {
+                type: DataTypes.STRING,
+                field: 'last_name_nepali'
+            },
             dob: DataTypes.DATEONLY,
-            startDate: DataTypes.DATEONLY,
-            endDate: DataTypes.DATEONLY,
-            photoUrl: DataTypes.STRING,
+            startDate: {
+                type: DataTypes.DATEONLY,
+                field: 'start_date'
+            },
+            endDate: {
+                type: DataTypes.DATEONLY,
+                field: 'end_date'
+            },
+            photoUrl: {
+                type: DataTypes.STRING,
+                field: 'photo_url'
+            },
             description: DataTypes.TEXT,
             email: DataTypes.STRING
         }, {
-            sequelize
+            sequelize,
+            underscored: true,
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
         });
     }
 

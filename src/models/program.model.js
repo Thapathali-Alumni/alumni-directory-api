@@ -9,12 +9,26 @@ class Program extends Sequelize.Model {
                 autoIncrement: true
             },
             name: DataTypes.STRING,
-            nameNepali: DataTypes.STRING,
-            startDate: DataTypes.DATE,
-            endDate: DataTypes.DATE,
+            nameNepali: {
+                type: DataTypes.STRING,
+                field: 'name_nepali',
+                allowNull: false
+            },
+            startDate: {
+                type: DataTypes.DATE,
+                field: 'start_date'
+            },
+            endDate: {
+                type: DataTypes.DATE,
+                field: 'end_date'
+            },
             description: DataTypes.TEXT
         }, {
-            sequelize
+            sequelize,
+            underscored: true,
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
         });
     }
 

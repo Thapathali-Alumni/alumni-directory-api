@@ -1,7 +1,7 @@
 {
     "tables": {
-        "Batches": {
-            "tableName": "Batches",
+        "batches": {
+            "tableName": "batches",
             "schema": {
                 "id": {
                     "primaryKey": true,
@@ -10,51 +10,53 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "name": {
+                    "allowNull": false,
                     "field": "name",
                     "seqType": "Sequelize.STRING"
                 },
                 "nameNepali": {
-                    "field": "nameNepali",
+                    "field": "name_nepali",
+                    "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
                 "startDate": {
-                    "field": "startDate",
+                    "field": "start_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "endDate": {
-                    "field": "endDate",
+                    "field": "end_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "description": {
                     "field": "description",
                     "seqType": "Sequelize.TEXT"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 },
                 "ProgramId": {
                     "allowNull": true,
                     "references": {
-                        "model": "Programs",
+                        "model": "programs",
                         "key": "id"
                     },
                     "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
-                    "field": "ProgramId",
+                    "field": "program_id",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         },
-        "Departments": {
-            "tableName": "Departments",
+        "departments": {
+            "tableName": "departments",
             "schema": {
                 "id": {
                     "primaryKey": true,
@@ -63,32 +65,34 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "name": {
+                    "allowNull": false,
                     "field": "name",
                     "seqType": "Sequelize.STRING"
                 },
                 "nameNepali": {
-                    "field": "nameNepali",
+                    "field": "name_nepali",
+                    "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
                 "description": {
                     "field": "description",
                     "seqType": "Sequelize.TEXT"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 }
             },
             "indexes": []
         },
-        "Members": {
-            "tableName": "Members",
+        "members": {
+            "tableName": "members",
             "schema": {
                 "id": {
                     "primaryKey": true,
@@ -97,19 +101,21 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "firstName": {
-                    "field": "firstName",
+                    "field": "first_name",
+                    "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
                 "lastName": {
-                    "field": "lastName",
+                    "field": "last_name",
+                    "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
                 "firstNameNepali": {
-                    "field": "firstNameNepali",
+                    "field": "first_name_nepali",
                     "seqType": "Sequelize.STRING"
                 },
                 "lastNameNepali": {
-                    "field": "lastNameNepali",
+                    "field": "last_name_nepali",
                     "seqType": "Sequelize.STRING"
                 },
                 "dob": {
@@ -117,15 +123,15 @@
                     "seqType": "Sequelize.DATEONLY"
                 },
                 "startDate": {
-                    "field": "startDate",
+                    "field": "start_date",
                     "seqType": "Sequelize.DATEONLY"
                 },
                 "endDate": {
-                    "field": "endDate",
+                    "field": "end_date",
                     "seqType": "Sequelize.DATEONLY"
                 },
                 "photoUrl": {
-                    "field": "photoUrl",
+                    "field": "photo_url",
                     "seqType": "Sequelize.STRING"
                 },
                 "description": {
@@ -136,32 +142,32 @@
                     "field": "email",
                     "seqType": "Sequelize.STRING"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 },
                 "BatchId": {
                     "allowNull": true,
                     "references": {
-                        "model": "Batches",
+                        "model": "batches",
                         "key": "id"
                     },
                     "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
-                    "field": "BatchId",
+                    "field": "batch_id",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         },
-        "Programs": {
-            "tableName": "Programs",
+        "programs": {
+            "tableName": "programs",
             "schema": {
                 "id": {
                     "primaryKey": true,
@@ -174,47 +180,48 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "nameNepali": {
-                    "field": "nameNepali",
+                    "field": "name_nepali",
+                    "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
                 "startDate": {
-                    "field": "startDate",
+                    "field": "start_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "endDate": {
-                    "field": "endDate",
+                    "field": "end_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "description": {
                     "field": "description",
                     "seqType": "Sequelize.TEXT"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 },
                 "DepartmentId": {
                     "allowNull": true,
                     "references": {
-                        "model": "Departments",
+                        "model": "departments",
                         "key": "id"
                     },
                     "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
-                    "field": "DepartmentId",
+                    "field": "department_id",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         },
-        "RefreshTokens": {
-            "tableName": "RefreshTokens",
+        "refresh_tokens": {
+            "tableName": "refresh_tokens",
             "schema": {
                 "id": {
                     "allowNull": false,
@@ -228,51 +235,51 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "expiryDate": {
-                    "field": "expiryDate",
+                    "field": "expiry_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "createdByIp": {
-                    "field": "createdByIp",
+                    "field": "created_by_ip",
                     "seqType": "Sequelize.STRING"
                 },
                 "revokedDate": {
-                    "field": "revokedDate",
+                    "field": "revoked_date",
                     "seqType": "Sequelize.DATE"
                 },
                 "revokedByIp": {
-                    "field": "revokedByIp",
+                    "field": "revoked_by_ip",
                     "seqType": "Sequelize.STRING"
                 },
                 "replacedByToken": {
-                    "field": "replacedByToken",
+                    "field": "replaced_by_token",
                     "seqType": "Sequelize.STRING"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 },
                 "UserId": {
                     "allowNull": true,
                     "references": {
-                        "model": "Users",
+                        "model": "users",
                         "key": "id"
                     },
                     "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
-                    "field": "UserId",
+                    "field": "user_id",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         },
-        "Users": {
-            "tableName": "Users",
+        "users": {
+            "tableName": "users",
             "schema": {
                 "id": {
                     "primaryKey": true,
@@ -292,7 +299,7 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "memberId": {
-                    "field": "memberId",
+                    "field": "member_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "role": {
@@ -300,17 +307,17 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "verificationToken": {
-                    "field": "verificationToken",
+                    "field": "verification_token",
                     "seqType": "Sequelize.STRING"
                 },
-                "createdAt": {
+                "created_at": {
                     "allowNull": false,
-                    "field": "createdAt",
+                    "field": "created_at",
                     "seqType": "Sequelize.DATE"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "allowNull": false,
-                    "field": "updatedAt",
+                    "field": "updated_at",
                     "seqType": "Sequelize.DATE"
                 }
             },
