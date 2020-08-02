@@ -5,13 +5,32 @@ class RefreshToken extends Sequelize.Model {
     static init(sequelize, DataTypes) {
         return super.init({
             token: DataTypes.STRING,
-            expiryDate: DataTypes.DATE,
-            createdByIp: DataTypes.STRING,
-            revokedDate: DataTypes.DATE,
-            revokedByIp: DataTypes.STRING,
-            replacedByToken: DataTypes.STRING
+            expiryDate: {
+                type: DataTypes.DATE,
+                field: 'expiry_date'
+            },
+            createdByIp: {
+                type: DataTypes.STRING,
+                field: 'created_by_ip'
+            },
+            revokedDate: {
+                type: DataTypes.DATE,
+                field: 'revoked_date'
+            },
+            revokedByIp: {
+                type: DataTypes.STRING,
+                field: 'revoked_by_ip'
+            },
+            replacedByToken: {
+                type: DataTypes.STRING,
+                field: 'replaced_by_token'
+            },
         }, {
-            sequelize
+            sequelize,
+            underscored: true,
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
         });
     }
 

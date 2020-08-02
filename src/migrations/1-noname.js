@@ -5,19 +5,19 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
- * createTable "Departments", deps: []
- * createTable "Users", deps: []
- * createTable "Programs", deps: [Departments]
- * createTable "Batches", deps: [Programs]
- * createTable "Members", deps: [Batches]
- * createTable "RefreshTokens", deps: [Users]
+ * createTable "departments", deps: []
+ * createTable "users", deps: []
+ * createTable "programs", deps: [departments]
+ * createTable "batches", deps: [programs]
+ * createTable "members", deps: [batches]
+ * createTable "refresh_tokens", deps: [users]
  *
  **/
 
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2020-07-30T04:54:01.576Z",
+    "created": "2020-08-02T07:31:44.409Z",
     "comment": ""
 };
 
@@ -25,7 +25,7 @@ var migrationCommands = function(transaction) {
     return [{
             fn: "createTable",
             params: [
-                "Departments",
+                "departments",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -35,24 +35,26 @@ var migrationCommands = function(transaction) {
                     },
                     "name": {
                         "type": Sequelize.STRING,
-                        "field": "name"
+                        "field": "name",
+                        "allowNull": false
                     },
                     "nameNepali": {
                         "type": Sequelize.STRING,
-                        "field": "nameNepali"
+                        "allowNull": false,
+                        "field": "name_nepali"
                     },
                     "description": {
                         "type": Sequelize.TEXT,
                         "field": "description"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     }
                 },
@@ -64,7 +66,7 @@ var migrationCommands = function(transaction) {
         {
             fn: "createTable",
             params: [
-                "Users",
+                "users",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -85,7 +87,7 @@ var migrationCommands = function(transaction) {
                     },
                     "memberId": {
                         "type": Sequelize.INTEGER,
-                        "field": "memberId"
+                        "field": "member_id"
                     },
                     "role": {
                         "type": Sequelize.STRING,
@@ -93,16 +95,16 @@ var migrationCommands = function(transaction) {
                     },
                     "verificationToken": {
                         "type": Sequelize.STRING,
-                        "field": "verificationToken"
+                        "field": "verification_token"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     }
                 },
@@ -114,7 +116,7 @@ var migrationCommands = function(transaction) {
         {
             fn: "createTable",
             params: [
-                "Programs",
+                "programs",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -128,37 +130,38 @@ var migrationCommands = function(transaction) {
                     },
                     "nameNepali": {
                         "type": Sequelize.STRING,
-                        "field": "nameNepali"
+                        "allowNull": false,
+                        "field": "name_nepali"
                     },
                     "startDate": {
                         "type": Sequelize.DATE,
-                        "field": "startDate"
+                        "field": "start_date"
                     },
                     "endDate": {
                         "type": Sequelize.DATE,
-                        "field": "endDate"
+                        "field": "end_date"
                     },
                     "description": {
                         "type": Sequelize.TEXT,
                         "field": "description"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     },
                     "DepartmentId": {
                         "type": Sequelize.INTEGER,
-                        "field": "DepartmentId",
+                        "field": "department_id",
                         "onUpdate": "CASCADE",
                         "onDelete": "SET NULL",
                         "references": {
-                            "model": "Departments",
+                            "model": "departments",
                             "key": "id"
                         },
                         "allowNull": true
@@ -172,7 +175,7 @@ var migrationCommands = function(transaction) {
         {
             fn: "createTable",
             params: [
-                "Batches",
+                "batches",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -182,41 +185,43 @@ var migrationCommands = function(transaction) {
                     },
                     "name": {
                         "type": Sequelize.STRING,
-                        "field": "name"
+                        "field": "name",
+                        "allowNull": false
                     },
                     "nameNepali": {
                         "type": Sequelize.STRING,
-                        "field": "nameNepali"
+                        "allowNull": false,
+                        "field": "name_nepali"
                     },
                     "startDate": {
                         "type": Sequelize.DATE,
-                        "field": "startDate"
+                        "field": "start_date"
                     },
                     "endDate": {
                         "type": Sequelize.DATE,
-                        "field": "endDate"
+                        "field": "end_date"
                     },
                     "description": {
                         "type": Sequelize.TEXT,
                         "field": "description"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     },
                     "ProgramId": {
                         "type": Sequelize.INTEGER,
-                        "field": "ProgramId",
+                        "field": "program_id",
                         "onUpdate": "CASCADE",
                         "onDelete": "SET NULL",
                         "references": {
-                            "model": "Programs",
+                            "model": "programs",
                             "key": "id"
                         },
                         "allowNull": true
@@ -230,7 +235,7 @@ var migrationCommands = function(transaction) {
         {
             fn: "createTable",
             params: [
-                "Members",
+                "members",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -240,19 +245,21 @@ var migrationCommands = function(transaction) {
                     },
                     "firstName": {
                         "type": Sequelize.STRING,
-                        "field": "firstName"
+                        "allowNull": false,
+                        "field": "first_name"
                     },
                     "lastName": {
                         "type": Sequelize.STRING,
-                        "field": "lastName"
+                        "allowNull": false,
+                        "field": "last_name"
                     },
                     "firstNameNepali": {
                         "type": Sequelize.STRING,
-                        "field": "firstNameNepali"
+                        "field": "first_name_nepali"
                     },
                     "lastNameNepali": {
                         "type": Sequelize.STRING,
-                        "field": "lastNameNepali"
+                        "field": "last_name_nepali"
                     },
                     "dob": {
                         "type": Sequelize.DATEONLY,
@@ -260,15 +267,15 @@ var migrationCommands = function(transaction) {
                     },
                     "startDate": {
                         "type": Sequelize.DATEONLY,
-                        "field": "startDate"
+                        "field": "start_date"
                     },
                     "endDate": {
                         "type": Sequelize.DATEONLY,
-                        "field": "endDate"
+                        "field": "end_date"
                     },
                     "photoUrl": {
                         "type": Sequelize.STRING,
-                        "field": "photoUrl"
+                        "field": "photo_url"
                     },
                     "description": {
                         "type": Sequelize.TEXT,
@@ -278,23 +285,23 @@ var migrationCommands = function(transaction) {
                         "type": Sequelize.STRING,
                         "field": "email"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     },
                     "BatchId": {
                         "type": Sequelize.INTEGER,
-                        "field": "BatchId",
+                        "field": "batch_id",
                         "onUpdate": "CASCADE",
                         "onDelete": "SET NULL",
                         "references": {
-                            "model": "Batches",
+                            "model": "batches",
                             "key": "id"
                         },
                         "allowNull": true
@@ -308,7 +315,7 @@ var migrationCommands = function(transaction) {
         {
             fn: "createTable",
             params: [
-                "RefreshTokens",
+                "refresh_tokens",
                 {
                     "id": {
                         "type": Sequelize.INTEGER,
@@ -323,41 +330,41 @@ var migrationCommands = function(transaction) {
                     },
                     "expiryDate": {
                         "type": Sequelize.DATE,
-                        "field": "expiryDate"
+                        "field": "expiry_date"
                     },
                     "createdByIp": {
                         "type": Sequelize.STRING,
-                        "field": "createdByIp"
+                        "field": "created_by_ip"
                     },
                     "revokedDate": {
                         "type": Sequelize.DATE,
-                        "field": "revokedDate"
+                        "field": "revoked_date"
                     },
                     "revokedByIp": {
                         "type": Sequelize.STRING,
-                        "field": "revokedByIp"
+                        "field": "revoked_by_ip"
                     },
                     "replacedByToken": {
                         "type": Sequelize.STRING,
-                        "field": "replacedByToken"
+                        "field": "replaced_by_token"
                     },
-                    "createdAt": {
+                    "created_at": {
                         "type": Sequelize.DATE,
-                        "field": "createdAt",
+                        "field": "created_at",
                         "allowNull": false
                     },
-                    "updatedAt": {
+                    "updated_at": {
                         "type": Sequelize.DATE,
-                        "field": "updatedAt",
+                        "field": "updated_at",
                         "allowNull": false
                     },
                     "UserId": {
                         "type": Sequelize.INTEGER,
-                        "field": "UserId",
+                        "field": "user_id",
                         "onUpdate": "CASCADE",
                         "onDelete": "SET NULL",
                         "references": {
-                            "model": "Users",
+                            "model": "users",
                             "key": "id"
                         },
                         "allowNull": true
@@ -373,37 +380,37 @@ var migrationCommands = function(transaction) {
 var rollbackCommands = function(transaction) {
     return [{
             fn: "dropTable",
-            params: ["Batches", {
+            params: ["batches", {
                 transaction: transaction
             }]
         },
         {
             fn: "dropTable",
-            params: ["Departments", {
+            params: ["departments", {
                 transaction: transaction
             }]
         },
         {
             fn: "dropTable",
-            params: ["Members", {
+            params: ["members", {
                 transaction: transaction
             }]
         },
         {
             fn: "dropTable",
-            params: ["Programs", {
+            params: ["programs", {
                 transaction: transaction
             }]
         },
         {
             fn: "dropTable",
-            params: ["RefreshTokens", {
+            params: ["refresh_tokens", {
                 transaction: transaction
             }]
         },
         {
             fn: "dropTable",
-            params: ["Users", {
+            params: ["users", {
                 transaction: transaction
             }]
         }

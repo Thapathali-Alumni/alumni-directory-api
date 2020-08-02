@@ -8,11 +8,23 @@ class Department extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement: true
             },
-            name: DataTypes.STRING,
-            nameNepali: DataTypes.STRING,
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            nameNepali: {
+                type: DataTypes.STRING,
+                field: 'name_nepali',
+                allowNull: false
+            },
             description: DataTypes.TEXT
         }, {
-            sequelize
+            sequelize,
+            underscored: true,
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
+
         });
     }
 
