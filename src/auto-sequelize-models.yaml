@@ -9,14 +9,10 @@ components:
                         - 'null'
                     format: int32
                 name:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 nameNepali:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 startDate:
                     type:
@@ -32,17 +28,19 @@ components:
                     type:
                         - string
                         - 'null'
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 Program:
                     $ref: '#/components/schemas/Program'
             required:
-                - createdAt
-                - updatedAt
+                - name
+                - nameNepali
+                - created_at
+                - updated_at
         Department:
             type: object
             properties:
@@ -52,23 +50,19 @@ components:
                         - 'null'
                     format: int32
                 name:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 nameNepali:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 description:
                     type:
                         - string
                         - 'null'
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 Programs:
@@ -76,8 +70,10 @@ components:
                     items:
                         $ref: '#/components/schemas/Program'
             required:
-                - createdAt
-                - updatedAt
+                - name
+                - nameNepali
+                - created_at
+                - updated_at
         Member:
             type: object
             properties:
@@ -87,14 +83,10 @@ components:
                         - 'null'
                     format: int32
                 firstName:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 lastName:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 firstNameNepali:
                     type:
@@ -135,17 +127,19 @@ components:
                         - string
                         - 'null'
                     maxLength: 255
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 Batch:
                     $ref: '#/components/schemas/Batch'
             required:
-                - createdAt
-                - updatedAt
+                - firstName
+                - lastName
+                - created_at
+                - updated_at
         Program:
             type: object
             properties:
@@ -160,9 +154,7 @@ components:
                         - 'null'
                     maxLength: 255
                 nameNepali:
-                    type:
-                        - string
-                        - 'null'
+                    type: string
                     maxLength: 255
                 startDate:
                     type:
@@ -178,10 +170,10 @@ components:
                     type:
                         - string
                         - 'null'
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 Department:
@@ -191,8 +183,9 @@ components:
                     items:
                         $ref: '#/components/schemas/Batch'
             required:
-                - createdAt
-                - updatedAt
+                - nameNepali
+                - created_at
+                - updated_at
         RefreshToken:
             type: object
             properties:
@@ -229,18 +222,18 @@ components:
                         - string
                         - 'null'
                     maxLength: 255
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 User:
                     $ref: '#/components/schemas/User'
             required:
                 - id
-                - createdAt
-                - updatedAt
+                - created_at
+                - updated_at
         User:
             type: object
             properties:
@@ -270,10 +263,10 @@ components:
                         - string
                         - 'null'
                     maxLength: 255
-                createdAt:
+                created_at:
                     type: string
                     format: date-time
-                updatedAt:
+                updated_at:
                     type: string
                     format: date-time
                 RefreshTokens:
@@ -283,5 +276,5 @@ components:
             required:
                 - username
                 - password
-                - createdAt
-                - updatedAt
+                - created_at
+                - updated_at
