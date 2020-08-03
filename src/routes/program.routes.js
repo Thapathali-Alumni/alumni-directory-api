@@ -1,5 +1,5 @@
 const express = require('express');
-const deptCtrl = require('../controllers/department.controller');
+const ctrl = require('../controllers/program.controller');
 const authorize = require('../helpers/authorize');
 const router = express.Router();
 const Role = require('../models/role')
@@ -7,19 +7,29 @@ const Role = require('../models/role')
 
 router
     .route('/')
-    .get(deptCtrl.list)
-    /** POST /api/departments Create new department */
-    .post(authorize(Role.Admin), deptCtrl.create);
+    .get(ctrl.list)
+    /** POST /api/programs Create new program */
+    .post(authorize(Role.Admin), ctrl.create);
+
+
+router.route('/:id')
+    .get(ctrl.get)
+    /** PUT /api/users/:userId - Update user */
+    .put(authorize(Role.Admin), ctrl.update)
+    /** DELETE /api/users/:userId - Delete user */
+    .delete(authorize(Role.Admin), ctrl.remove);
+
+
 
 /**
  * @swagger
  * path:
- *  /department:
+ *  /program:
  *    get:
- *      summary: Gets a list of all departments limited by page and pagesize
+ *      summary: Gets a list of all programs limited by page and pagesize
  *      security:
  *          - BearerAuth: []
- *      tags: [Department]
+ *      tags: [Program]
  *      parameters:
  *        - in: query
  *          name: page
@@ -35,22 +45,22 @@ router
  *          description: Limit the number of items in each page. Default is 30
  *      responses:
  *        "200":
- *          description: Got the departments
+ *          description: Got the programs
  *          content:
  *            application/json:
  *              schema:
  *                type: "array"
  *                items:
- *                  $ref: '#/components/schemas/Department'
+ *                  $ref: '#/components/schemas/Program'
  */
 
 /**
  * @swagger
  * path:
- *  /department:
+ *  /program:
  *    post:
- *      summary: Creates Department
- *      tags: [Department]
+ *      summary: Creates Program
+ *      tags: [Program]
  *      security:
  *          - BearerAuth: []           
  *      requestBody:
@@ -62,6 +72,7 @@ router
  *              required:
  *                  - name
  *                  - nameNepali
+ *                  - DepartmentId
  *              properties:
  *                  name:
  *                      type: string
@@ -69,28 +80,30 @@ router
  *                      type: string
  *                  description:
  *                      type: string
+ *                  DepartmentId:
+ *                      type: integer
  *      responses:
  *        "200":
  *          description: successful message is successful
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Department'
+ *                $ref: '#/components/schemas/Program'
  */
 
 /**
  * @swagger
  * path:
- *  /department/{id}:
+ *  /program/{id}:
  *    get:
- *      summary: Gets a department by id
+ *      summary: Gets a program by id
  *      security:
  *          - BearerAuth: []
- *      tags: [Department]
+ *      tags: [Program]
  *      parameters:
  *          - name: "id"
  *            in: "path"
- *            description: "Id of department"
+ *            description: "Id of program"
  *            required: true
  *            type: "integer"
  *            format: "int64"
@@ -100,23 +113,23 @@ router
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Department'
+ *                $ref: '#/components/schemas/Program'
  */
 
 
 /**
  * @swagger
  * path:
- *  /department/{id}:
+ *  /program/{id}:
  *    put:
- *      summary: Updates the department
- *      tags: [Department]
+ *      summary: Updates the program
+ *      tags: [Program]
  *      security:
  *          - BearerAuth: []
  *      parameters:
  *          - name: "id"
  *            in: "path"
- *            description: "Id of department"
+ *            description: "Id of program"
  *            required: true
  *            type: "integer"
  *            format: "int64"          
@@ -142,22 +155,22 @@ router
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Department'
+ *                $ref: '#/components/schemas/Program'
  */
 
 /**
  * @swagger
  * path:
- *  /department/{id}:
+ *  /program/{id}:
  *    delete:
- *      summary: Deletes a department by id
+ *      summary: Deletes a program by id
  *      security:
  *          - BearerAuth: []
- *      tags: [Department]
+ *      tags: [Program]
  *      parameters:
  *          - name: "id"
  *            in: "path"
- *            description: "Id of department"
+ *            description: "Id of program"
  *            required: true
  *            type: "integer"
  *            format: "int64"
@@ -167,19 +180,8 @@ router
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Department'
+ *                $ref: '#/components/schemas/Program'
  */
-
-
-router.route('/:id')
-    .get(deptCtrl.get)
-    /** PUT /api/users/:userId - Update user */
-    .put(authorize(Role.Admin), deptCtrl.update)
-    /** DELETE /api/users/:userId - Delete user */
-    .delete(authorize(Role.Admin), deptCtrl.remove);
-
-
-
 
 
 module.exports = router;

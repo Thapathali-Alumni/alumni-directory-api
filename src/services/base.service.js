@@ -44,11 +44,12 @@ class BaseService {
     async update(id, params) {
         const mObj = await this.model.update(params, {
             returning: true,
+            plain: true,
             where: {
                 id: id
             }
         });
-
+        //Sends an array [updatedObj, no_of_rows updated]
         return mObj;
     }
 

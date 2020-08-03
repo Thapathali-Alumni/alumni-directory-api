@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "db:migrate": "npx sequelize db:migrate",
+    "db:seed:all": "npx sequelize db:seed:all",
     "db:makemigrations": "./node_modules/sequelize-auto-migrations/bin/makemigration.js",
-    "start": "npm run db:migrate & env NODE_ENV=development nodemon app.js"
+    "doc:swaggerschemas": "node ./src/get-swagger-doc.js",
+    "start": "npm run db:migrate & npm run db:seed:all & env NODE_ENV=development nodemon app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
