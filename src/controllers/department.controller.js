@@ -29,7 +29,7 @@ class DepartmentController {
     }
 
     async get(req, res) {
-        const dept = await new baseService(db.Department).getOne(req.params.id);
+        const dept = await new baseService(db.Department).getOne(req.params.id, ['Program']);
         res.json(dept);
     }
 

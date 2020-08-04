@@ -13,6 +13,7 @@ class UserService {
         password,
         ipAddress
     ) {
+        console.log('REACHED HERE 1');
         const user = await db.User.findOne({
             where: {
                 username: uName
@@ -26,6 +27,7 @@ class UserService {
         const token = this.generateToken(user);
         const refreshToken = this.generateRefreshToken(user, ipAddress);
 
+        console.log("HEY REACHED HERE!!");
         //Save refresh token
         await refreshToken.save();
 
