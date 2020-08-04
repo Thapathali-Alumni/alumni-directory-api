@@ -12,8 +12,8 @@ module.exports = {
       password: password,
       role: 'Admin',
       verification_token: vToken,
-      created_at: Date.now(),
-      updated_at: Date.now()
+      created_at: new Date(),
+      updated_at: new Date()
     }], {});
 
 

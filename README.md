@@ -26,7 +26,7 @@ npm run db:migrate
 ```
 
 # Logging in Swagger
-* First execute the login route with username and password! Default username, password is admin, admin
+* First execute the login route with username and password! Default username, password is admin, admin.
 * From the response body of login, copy the token field.
 * In documentation page, click on 'Authorize' and paste the copied token into Bearer 'field' and click login. 
 * All routes will be accessible now!
