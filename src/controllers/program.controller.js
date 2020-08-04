@@ -29,7 +29,7 @@ class ProgramController {
     }
 
     async get(req, res) {
-        const dept = await new baseService(db.Program).getOne(req.params.id, ['Department']);
+        const dept = await new baseService(db.Program).getOne(req.params.id, ['Department', 'Batches']);
         res.json(dept);
     }
 
