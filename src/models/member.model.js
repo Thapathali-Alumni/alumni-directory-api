@@ -43,7 +43,10 @@ class Member extends Sequelize.Model {
                 field: 'photo_url'
             },
             description: DataTypes.TEXT,
-            email: DataTypes.STRING
+            email: {
+                type: DataTypes.STRING,
+                unique: true
+            }
         }, {
             sequelize,
             underscored: true,
