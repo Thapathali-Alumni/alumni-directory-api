@@ -30,6 +30,22 @@ class MemberService extends BaseService {
     }
 
 
+    async list(page, pageSize, include = []) {
+        const where = {};
+        //Check where and construct the where query here!
+
+        const obj = await this.model.findAll({
+            include: include,
+            ...paginate({
+                page,
+                pageSize
+            })
+        });
+
+        return obj;
+    }
+
+
 
 
 }
