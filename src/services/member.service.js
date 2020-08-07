@@ -1,5 +1,9 @@
 const BaseService = require("./base.service");
 const db = require('../database/sequelize');
+const {
+    paginate
+} = require('../helpers/dbUtils');
+
 
 class MemberService extends BaseService {
 
