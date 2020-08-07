@@ -7,19 +7,19 @@ const Member = db.Member;
 
 class MemberController {
 
-    async create(req, res) {
+    async create(req, res, next) {
         try {
             const dept = await memberService.create(req.body);
             res.json(dept);
         } catch (exception) {
-            throw exception
+            next(exception)
         }
     }
 
     async list(req, res) {
         const page = req.query.page;
         const pageSize = req.query.pageSize;
-        const depts = await new memberService.list(page, pageSize);
+        const depts = await memberService.list(page, pageSize);
         res.json(depts);
     }
 

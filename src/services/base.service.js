@@ -4,8 +4,13 @@ const APIError = require('../helpers/APIError');
 const {
     paginate
 } = require('../helpers/dbUtils');
+const sequelize = require('../database/sequelize');
 
 
+const Sequelize = require('sequelize');
+const {
+    ValidationError
+} = require('sequelize');
 
 class BaseService {
 
@@ -37,8 +42,12 @@ class BaseService {
     }
 
     async create(params) {
-        const mObj = await this.model.create(params);
-        return mObj;
+        try {
+            const mObj = await this.model.create(params);
+            return mObj;
+        } catch (exception) {
+            throw exception;
+        }
     }
 
     async update(id, params) {

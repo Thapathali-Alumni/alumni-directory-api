@@ -139,7 +139,6 @@
                     "seqType": "Sequelize.TEXT"
                 },
                 "email": {
-                    "unique": true,
                     "field": "email",
                     "seqType": "Sequelize.STRING"
                 },
@@ -325,5 +324,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }

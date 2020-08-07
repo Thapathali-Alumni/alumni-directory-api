@@ -11,6 +11,7 @@ const APIError = require('./src/helpers/APIError')
 const helmet = require('helmet');
 const cors = require('cors');
 const expressValidation = require('express-validation')
+const Sequelize = require('sequelize');
 
 const startServer = function (port) {
     const app = express();
@@ -48,10 +49,17 @@ const startServer = function (port) {
 
     // if error is not an instanceOf APIError, convert it.
     app.use((err, req, res, next) => {
+
         if (err instanceof expressValidation.ValidationError) {
             const unifiedErrorMessage = err.details.body
                 .map(error => error.message)
                 .join(' and ');
+            const error = new APIError(unifiedErrorMessage, err.statusCode, true);
+            return next(error);
+        } else if (err instanceof Sequelize.ValidationError) {
+            const unifiedErrorMessage = err.errors
+                .map(error => error.message)
+                .join(' and ')
             const error = new APIError(unifiedErrorMessage, err.statusCode, true);
             return next(error);
         } else if (!(err instanceof APIError)) {
