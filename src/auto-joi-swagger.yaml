@@ -1,0 +1,38 @@
+components:
+    schemas:
+        MemberCreate:
+            type: object
+            properties:
+                firstName:
+                    type: string
+                lastName:
+                    type: string
+                firstNameNepali:
+                    type: string
+                lastNameNepali:
+                    type: string
+                startDate:
+                    type: string
+                    format: date-time
+                endDate:
+                    type: string
+                    format: date-time
+                dob:
+                    type: string
+                    format: date-time
+                photoUrl:
+                    type: string
+                description:
+                    type: string
+                email:
+                    type: string
+                    format: email
+                BatchId:
+                    type: integer
+            required:
+                - firstName
+                - lastName
+                - dob
+                - email
+                - BatchId
+            additionalProperties: false
