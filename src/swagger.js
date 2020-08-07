@@ -34,6 +34,7 @@ const options = {
 
     apis: ["./src/components.yaml",
         "./src/auto-sequelize-models.yaml",
+        "./src/auto-joi-swagger.yaml",
         ...apiFiles
     ]
 };

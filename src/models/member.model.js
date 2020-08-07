@@ -1,4 +1,7 @@
 const Sequelize = require("sequelize");
+const {
+    Joi
+} = require("express-validation");
 
 class Member extends Sequelize.Model {
     static init(sequelize, DataTypes) {
@@ -53,6 +56,31 @@ class Member extends Sequelize.Model {
     static associate(models) {
         this.myAssociation = this.belongsTo(models.Batch);
     }
+
+
+    //This is used in route validation! 
+    static get validationCreate() {
+        const joiObj = Joi.object({
+            firstName: Joi.string().required(),
+            lastName: Joi.string().required(),
+            firstNameNepali: Joi.string(),
+            lastNameNepali: Joi.string(),
+            startDate: Joi.date(),
+            endDate: Joi.date(),
+            dob: Joi.date().required(),
+            photoUrl: Joi.string(),
+            description: Joi.string(),
+            email: Joi.string().email({
+                tlds: {
+                    allow: false
+                }
+            }).required(),
+            BatchId: Joi.number().integer().required(),
+        });
+
+        return joiObj;
+    }
+
 }
 
 module.exports = Member
