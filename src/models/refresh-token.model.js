@@ -38,12 +38,19 @@ class RefreshToken extends Sequelize.Model {
         this.myAssociation = this.belongsTo(models.User);
     }
 
-    isExpired() {
-        return Date.now() >= this.expiryDate;
+    get isExpired() {
+        if (this.expiryDate) {
+            return Date.now() >= this.expiryDate;
+        }
+        return false;
     }
 
-    isActive() {
-        return !this.revoked && !this.isExpired();
+    get isActive() {
+        return !this.revokedDate && !this.isExpired;
+    }
+
+    get mydate() {
+        return this.token;
     }
 }
 

@@ -3,7 +3,8 @@
     "dialect": "sqlite",
     "storage": "./src/resource/db3.sqlite3",
     "seederStorage": "sequelize",
-    "jwtSecret": "Apple ball cat"
+    "jwtSecret": "Apple ball cat",
+    "baseUrlCalledBySwagger": "http://localhost:3000/api/v1"
 
   },
   "test": {
