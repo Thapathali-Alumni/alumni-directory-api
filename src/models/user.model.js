@@ -24,6 +24,14 @@ class User extends Sequelize.Model {
             verificationToken: {
                 type: DataTypes.STRING,
                 field: 'verification_token'
+            },
+            resetToken: {
+                type: DataTypes.STRING,
+                field: 'reset_token'
+            },
+            resetTokenExpiry: {
+                type: DataTypes.DATE,
+                field: 'reset_token_expiry'
             }
         }, {
             sequelize,

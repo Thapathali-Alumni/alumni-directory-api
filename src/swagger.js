@@ -9,6 +9,10 @@ const path = require('path');
 const routesDir = path.normalize(`${__dirname}/routes`);
 const apiFiles = glob.sync(routesDir + '/*.js');
 
+const config = require('./config/index');
+
+const apiURL = config.baseUrlCalledBySwagger;
+
 // Swagger set up
 const options = {
     swaggerDefinition: {
@@ -28,7 +32,7 @@ const options = {
             }
         },
         servers: [{
-            url: "http://localhost:3000/api/v1"
+            url: apiURL
         }]
     },
 
@@ -42,6 +46,7 @@ const options = {
 
 
 const specs = swaggerJsdoc(options);
+
 router.get("/api-docs.json", (req, res) => {
     res.send(specs);
 });
