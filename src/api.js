@@ -5,7 +5,7 @@ const basicRoute = require('express').Router();
 
 basicRoute.get('/', (req, res) => {
     res.status(200).json({
-        key: 'dummy-value'
+        key: 'Navigate to /docs for documentation'
     });
 });
 

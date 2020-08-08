@@ -1,0 +1,280 @@
+components:
+    schemas:
+        Batch:
+            type: object
+            properties:
+                id:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                name:
+                    type: string
+                    maxLength: 255
+                nameNepali:
+                    type: string
+                    maxLength: 255
+                startDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                endDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                description:
+                    type:
+                        - string
+                        - 'null'
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                Program:
+                    $ref: '#/components/schemas/Program'
+            required:
+                - name
+                - nameNepali
+                - created_at
+                - updated_at
+        Department:
+            type: object
+            properties:
+                id:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                name:
+                    type: string
+                    maxLength: 255
+                nameNepali:
+                    type: string
+                    maxLength: 255
+                description:
+                    type:
+                        - string
+                        - 'null'
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                Programs:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Program'
+            required:
+                - name
+                - nameNepali
+                - created_at
+                - updated_at
+        Member:
+            type: object
+            properties:
+                id:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                firstName:
+                    type: string
+                    maxLength: 255
+                lastName:
+                    type: string
+                    maxLength: 255
+                firstNameNepali:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                lastNameNepali:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                dob:
+                    type:
+                        - string
+                        - 'null'
+                    format: date
+                startDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date
+                endDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date
+                photoUrl:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                description:
+                    type:
+                        - string
+                        - 'null'
+                email:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                Batch:
+                    $ref: '#/components/schemas/Batch'
+            required:
+                - firstName
+                - lastName
+                - created_at
+                - updated_at
+        Program:
+            type: object
+            properties:
+                id:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                name:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                nameNepali:
+                    type: string
+                    maxLength: 255
+                startDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                endDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                description:
+                    type:
+                        - string
+                        - 'null'
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                Department:
+                    $ref: '#/components/schemas/Department'
+                Batches:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Batch'
+            required:
+                - nameNepali
+                - created_at
+                - updated_at
+        RefreshToken:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int32
+                token:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                expiryDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                createdByIp:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                revokedDate:
+                    type:
+                        - string
+                        - 'null'
+                    format: date-time
+                revokedByIp:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                replacedByToken:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                User:
+                    $ref: '#/components/schemas/User'
+            required:
+                - id
+                - created_at
+                - updated_at
+        User:
+            type: object
+            properties:
+                id:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                username:
+                    type: string
+                    maxLength: 255
+                password:
+                    type: string
+                    maxLength: 255
+                memberId:
+                    type:
+                        - integer
+                        - 'null'
+                    format: int32
+                role:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                verificationToken:
+                    type:
+                        - string
+                        - 'null'
+                    maxLength: 255
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                    type: string
+                    format: date-time
+                RefreshTokens:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RefreshToken'
+            required:
+                - username
+                - password
+                - created_at
+                - updated_at
