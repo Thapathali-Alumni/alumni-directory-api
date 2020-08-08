@@ -11,7 +11,7 @@ const apiFiles = glob.sync(routesDir + '/*.js');
 
 const config = require('./config/index');
 
-const apiURL = config.baseUrl + config.baseApiPath;
+const apiURL = config.swaggerApplicationName;
 
 // Swagger set up
 const options = {
