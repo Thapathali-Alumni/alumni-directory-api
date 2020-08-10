@@ -11,14 +11,14 @@ const apiFiles = glob.sync(routesDir + '/*.js');
 
 const config = require('./config/index');
 
-const apiURL = config.swaggerApplicationName;
+const applicationName = config.swaggerApplicationName;
 
 // Swagger set up
 const options = {
     swaggerDefinition: {
         openapi: "3.0.0",
         info: {
-            title: "Thapathali Alumni API",
+            title: applicationName,
             version: "1.0.0",
             description: "An API project for Thapathali Alumni project",
             license: {
