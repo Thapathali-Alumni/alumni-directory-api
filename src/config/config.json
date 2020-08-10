@@ -7,7 +7,6 @@
     "swaggerApplicationName": "Thapathali Alumni API V1 - Development",
     "baseApiPath": "/api/v1"
   },
-
   "test": {
     "dialect": "sqlite",
     "storage": "./src/resource/db3.sqlite3",
@@ -16,7 +15,6 @@
     "swaggerApplicationName": "Thapathali Alumni API V1 - Test/Staging",
     "baseApiPath": "/api/v1"
   },
-
   "production": {
     "dialect": "sqlite",
     "storage": "./src/resource/db3.sqlite3",
