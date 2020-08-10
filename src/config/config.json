@@ -4,7 +4,7 @@
     "storage": "./src/resource/db3.sqlite3",
     "seederStorage": "sequelize",
     "jwtSecret": "Apple ball cat",
-    "swaggerApplicationName": "Thapathali Alumni API V1 - Development",
+    "swaggerApplicationName": "Thapathali Alumni API V1 - Dev",
     "baseApiPath": "/api/v1"
   },
 
