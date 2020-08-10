@@ -32,7 +32,8 @@ const options = {
             }
         },
         servers: [{
-            url: apiURL
+            url: '/api/v1/'
+
         }]
     },
 
